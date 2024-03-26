@@ -1,16 +1,19 @@
 
 
-public class Event{
+public abstract class Event{
 
     public static final double insuranceCost = 1000.00;
     public static final double baseEventCost= 5000;
     public static final double tax = 0.3;
+    
 
     private String eventID;
     private String eventName;
     private String eventLocation;
     private String pointOfContact;
     private double eventCost;
+    private CalculateEventCostClass calculateEventCostObject;
+    
     
     private int totalParticipants;
     private int totalEventDays;
@@ -24,7 +27,7 @@ public class Event{
         this.pointOfContact = pointOfContact;
         this.totalParticipants = totalParticipants;
         this.totalEventDays = totalEventDays;
-
+        //this.eventCost = baseEventCost + (baseEventCost*tax) + insuranceCost;
     }
 
     public String getEventID(){
@@ -59,13 +62,6 @@ public class Event{
         this.pointOfContact = pointOfContact;
     }
 
-    /* public double getEventCost(){
-        return eventCost;
-    }
-
- */    /* public void setEventCost(double eventCost){
-        this.eventCost = eventCost;
-    } */
 
     public int getTotalParticipants(){
         return totalParticipants;
@@ -80,18 +76,25 @@ public class Event{
     }
 
     public double getEventCost(){
-        return eventCost;
+        return (baseEventCost + (baseEventCost*tax) + insuranceCost);
     }
 
     public void setTotalEventDays(int totalEventDays){
         this.totalEventDays = totalEventDays;
     }
 
-    public String toString(){
-        return eventID + " " + eventName + " " + eventLocation + " " + pointOfContact + " " + eventCost + " " + totalParticipants + " " + totalEventDays;
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventID='" + eventID + 
+                ", eventName='" + eventName + 
+                ", eventLocation='" + eventLocation + 
+                ", pointOfContact='" + pointOfContact + 
+                ", eventCost=" + eventCost +
+                ", totalParticipants=" + totalParticipants +
+                ", totalEventDays=" + totalEventDays +
+                '}';
     }
 
-    public void calculateEventCost(){
-        this.eventCost = baseEventCost + (baseEventCost * tax) + insuranceCost;
-    }
+    public abstract void calculateEventCost();
 }

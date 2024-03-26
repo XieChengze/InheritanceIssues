@@ -6,6 +6,8 @@ public class ConferenceEvent extends Event{
     private boolean dinnerRequired;
     private double dinnerCost;
     private double conferenceEventCost;
+    private double eventCost;
+    CalculateEventCostClass calculateEventCostObject = new CalculateEventCostClass();
 
     public double getBreakfastCost(){
         return breakfastCost;
@@ -35,11 +37,9 @@ public class ConferenceEvent extends Event{
         this.dinnerCost = dinnerCost;
     }
 
-
     @Override
     public void calculateEventCost(){
-        super.calculateEventCost();
-        conferenceEventCost = getEventCost() + ((breakfastCost + lunchCost + dinnerCost) * getTotalParticipants() * getTotalEventDays());
+        eventCost = calculateEventCostObject.calcualteEventCost() + (calculateEventCostObject.calcualteEventCost() * 0.3);
     }
 
 

@@ -4,6 +4,7 @@ public class PastEvent extends Event{
     private boolean requiresExtension;
     private String paymentDetails;
     private double pastEventCost;
+    
 
     public PastEvent(String eventID, String eventName, String eventLocation, String pointOfContact, int totalParticipants, int totalEventDays) {
 
@@ -29,7 +30,6 @@ public class PastEvent extends Event{
 
     @Override
     public void calculateEventCost(){
-        super.calculateEventCost();
         pastEventCost = getEventCost();
     }
 
